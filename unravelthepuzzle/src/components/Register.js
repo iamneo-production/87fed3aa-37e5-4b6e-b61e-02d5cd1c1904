@@ -19,7 +19,7 @@ export const Register=(props)=>{
                  
                  <label htmlFor="password">Password</label>
                  <input value={pwd} type="password" placeholder="Enter your Password" id="password" name="password"/>
-                 <Button type="submit" variant="outlined" color="info" >Resigter</Button>
+                 <Button type="submit" variant="outlined" color="info" >Register</Button>
              </form>
              <Button onClick={()=>props.onSwitch('login')} variant="contained" color="info" >Already have an account? Login</Button>   
         </>

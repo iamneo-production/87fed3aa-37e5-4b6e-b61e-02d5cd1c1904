@@ -1,11 +1,12 @@
 import React from 'react';
 import { useDrag } from 'react-dnd';
+
 const rows = 4;
 const columns = 4;
 
 const matrix = Array(rows).fill().map(() =>Array(columns).fill(0));
 
-function Pieces(props){
+function ShuffledPieces(props){
   const [{ isDragging }, drag] = useDrag(() => ({
     type: "div",
     collect: (monitor) => ({
@@ -19,9 +20,12 @@ function Pieces(props){
           {item.map((subItem,subIndex)=>
              <div 
                 className="pieces"
+                ref={drag}
                 style={props.flag?{
+                backgroundPositionX:-100*subIndex,
+                backgroundPositionY:-100*index,
                 position:"absolute",
-                opacity: isDragging ? 0.5 : 1,
+                opacity: isDragging?0.5: 1,
                 cursor: 'move',
                 left:Math.floor((Math.random()*290))+ "px",
                 top:Math.floor((Math.random()*290))+ "px",
@@ -33,8 +37,8 @@ function Pieces(props){
    })
   )
 }
-function setBorder(){
-  grid.map((i)=>{
+export function setBorder(){
+  matrix.map((i)=>{
     return(
       <div>
        {i.map(()=>
@@ -48,4 +52,4 @@ function setBorder(){
   });
 
 }
-export default Pieces;
+export default ShuffledPieces;

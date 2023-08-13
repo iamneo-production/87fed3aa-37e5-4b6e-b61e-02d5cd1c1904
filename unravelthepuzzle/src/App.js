@@ -6,17 +6,14 @@ import {Register} from './components/Register';
 import {Button} from '@mui/material';
 import { DndProvider } from 'react-dnd';
 import { HTML5Backend } from 'react-dnd-html5-backend';
-import { useDrag } from 'react-dnd'
-import Pieces from './components/Pieces';
 
-const rows = 4;
-const columns = 4;
-
-const matrix = Array(rows).fill().map(() =>Array(columns).fill(0));
+import ShuffledPieces from './components/ShuffledPieces';
+import DropPieces from './components/DropPieces';
 
   function App() {
    var [startButtonClicked,toggle]=useState(false);
    const [currForm,setCurrForm]=useState('register');
+   
    function startButtonClickHandler(){
         
       toggle(startButtonClicked=true);
@@ -35,27 +32,14 @@ const matrix = Array(rows).fill().map(() =>Array(columns).fill(0));
       </header>
       <div className="App-content">
          <div className="pieceContainer">
-          
+             <DndProvider backend={HTML5Backend}>
+                 <ShuffledPieces flag={startButtonClicked}/>
+             </DndProvider>
          </div>
          <div className="puzzleContainer">
-         {matrix.map((item,index)=>{
-               return(
-                <div>
-                   {item.map((subItem,subIndex)=>
-                      <div 
-                         className="pieces"
-                         style={startButtonClicked?{
-                         position:"absolute",
-                         cursor: 'move',
-                         left:Math.floor((Math.random()*290))+ "px",
-                         top:Math.floor((Math.random()*290))+ "px",
-                         }:{backgroundPositionX:-100*subIndex,backgroundPositionY:-100*index}}>
-                      </div>
-                   )}
-                </div>
-                );
-            })
-          }
+             <DndProvider backend={HTML5Backend}>
+                 <DropPieces/>
+             </DndProvider>
          </div>
       </div>
       <Button 

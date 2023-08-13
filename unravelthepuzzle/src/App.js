@@ -2,6 +2,7 @@
 import './App.css';
 import React,{useState} from'react';
 import {Login} from './components/Login';
+import {Header} from './components/Header';
 import {Register} from './components/Register';
 import {Button} from '@mui/material';
 import { DndProvider } from 'react-dnd';
@@ -27,9 +28,7 @@ import DropPieces from './components/DropPieces';
     return (
     <div className="App">
      { currForm==="login"?<Login onSwitch={toggleForm}/>:<Register onSwitch={toggleForm}/>}
-      <header className="App-header">
-         Solve the puzzle
-      </header>
+      <Header/>
       <div className="App-content">
          <div className="pieceContainer">
              <DndProvider backend={HTML5Backend}>

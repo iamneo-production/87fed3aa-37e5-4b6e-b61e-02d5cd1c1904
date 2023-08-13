@@ -37,19 +37,5 @@ function ShuffledPieces(props){
    })
   )
 }
-export function setBorder(){
-  matrix.map((i)=>{
-    return(
-      <div>
-       {i.map(()=>
-         <div 
-           className="pieces"
-           style="background-image:none">
-         </div>
-       )}
-      </div>
-    );
-  });
 
-}
 export default ShuffledPieces;

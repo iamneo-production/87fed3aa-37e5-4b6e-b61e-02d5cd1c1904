@@ -102,13 +102,10 @@ function DragDrop() {
 
     }
    
-     console.log(picdata);
-    console.log("shuffeld"+sindex);
-    console.log("dropping"+index);
-    // console.log(shuffled);
-    //const pictureList = shuffled.filter((picture) => id === solved.indexOf(picture.id)+1);    //const pictureList = shuffled.filter((picture) => id === picture.id); 
-    //console.log(pictureList)
-   // setSolved((solved) => [...solved, pictureList[0]]);
+    //  console.log(picdata);
+    // console.log("shuffeld"+sindex);
+    // console.log("dropping"+index);
+  
   };
 
 

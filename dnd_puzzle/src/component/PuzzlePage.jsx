@@ -10,6 +10,7 @@ export const PuzzleComponent = () => {
         async function InitialImage() {
            let res= await fetch('https://ide-dfadcecfdbdededffebfebeececeacfebbcedbfff.premiumproject.examly.io/proxy/8080/api')
             data= await res.json();
+            setpuzzlePeaces(data)
             }           
 
             InitialImage();

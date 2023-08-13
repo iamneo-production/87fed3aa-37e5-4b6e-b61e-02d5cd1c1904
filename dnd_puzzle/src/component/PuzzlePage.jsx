@@ -43,8 +43,9 @@ export const PuzzleComponent = () => {
     }))
 
     const addImage = (item) => {
- 
-        console.log(dummyPeaces)
+        console.log(puzzlePeaces)
+        console.log(dummyPeaces);
+        console.log(item);
         
     }
 

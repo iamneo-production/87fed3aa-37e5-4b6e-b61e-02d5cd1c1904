@@ -2,38 +2,49 @@
   "api": [
     {
     "id": 1,
-    "url": "./kungfupanda/1.png"
+    "url": "./kungfupanda/1.png",
+    "position": "-1% 0%"
   },
   {
     "id": 2,
-    "url": "./kungfupanda/2.png"
+    "url": "./kungfupanda/2.png",
+    "position": "-1% 0%"
   },
   {
     "id": 3,
-  "url": "./kungfupanda/3.png"},
+  "url": "./kungfupanda/3.png",
+  "position": "-1% 0%"
+}
+  ,
   {
     "id": 4,
-    "url": "./kungfupanda/4.png"
+    "url": "./kungfupanda/4.png",
+    "position": "-1% 0%"
   },
   {
     "id": 5,
-    "url": "./kungfupanda/5.png"
+    "url": "./kungfupanda/5.png",
+    "position": "-1% 0%"
   },
   {
     "id": 6,
-    "url": "./kungfupanda/6.png"
+    "url": "./kungfupanda/6.png",
+    "position": "-1% 0%"
   },
   {
     "id": 7,
-    "url": "./kungfupanda/7.png"
+    "url": "./kungfupanda/7.png",
+    "position": "-1% 0%"
   },
   {
     "id": 8,
-    "url": "./kungfupanda/8.png"
+    "url": "./kungfupanda/8.png",
+    "position": "-1% 0%"
   },
   {
     "id": 9,
-    "url": "./kungfupanda/9.png"
+    "url": "./kungfupanda/9.png",
+    "position": "-1% 0%"
   }
 ]
 }

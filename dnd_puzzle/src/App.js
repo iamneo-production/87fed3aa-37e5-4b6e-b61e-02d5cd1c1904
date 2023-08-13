@@ -1,14 +1,17 @@
 import './App.css';
 import { PuzzleComponent } from './component/PuzzlePage';
+import { HTML5Backend } from 'react-dnd-html5-backend'
+
+import { DndProvider } from 'react-dnd'
 
 function App() {
   return (
     <div className="App">
-        
-      <PuzzleComponent>
-          
-
-      </PuzzleComponent>
+        <DndProvider backend={HTML5Backend}>
+        <PuzzleComponent/>
+      
+        </DndProvider>
+      
     </div>
   );
 }

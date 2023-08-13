@@ -1,42 +1,87 @@
 import { useState, useEffect } from "react";
+import { PeaceComponent } from './PeacePage'
+import { useDrop } from "react-dnd";
 import '../styles/PuzzlePage.css';
 
 export const PuzzleComponent = () => {
 
-    const [puzzlePeaces,setpuzzlePeaces] = useState([]);
+
+  
+    const [puzzlePeaces, setpuzzlePeaces] = useState([]);
+    const [dummyPeaces, setDummyPeaces] = useState([]);
+
+  
+
+    
 
     useEffect(() => {
         let data;
         async function InitialImage() {
-           let res= await fetch('https://ide-dfadcecfdbdededffebfebeececeacfebbcedbfff.premiumproject.examly.io/proxy/8080/api')
-            data= await res.json();
-            setpuzzlePeaces(data)
-            }           
+            let res = await fetch('https://ide-dfadcecfdbdededffebfebeececeacfebbcedbfff.premiumproject.examly.io/proxy/8080/api')
+            data = await res.json();
+            setpuzzlePeaces(data);
+            
+            
+        }
 
-            InitialImage();
-            console.log(data)
+        InitialImage();
+      
+
+        return () => {
+            InitialImage()
+        }
+
+
     }, [])
 
+    const [{ isOver }, drop] = useDrop(() => ({
+        accept: "image",
+        drop: (item) => addImage(item),
+        collect: (monitor) => ({
+            isOver: !!monitor.isOver(),
+        })
+    }))
 
-return (
-    <>
-        <div className="jigsaw-puzzle-main">
-
-
-            <div className="part" id="part1"></div>
-            <div className="part" id="part2"></div>
-            <div className="part" id="part3"></div>
-            <div className="part" id="part4"></div>
-            <div className="part" id="part5"></div>
-            <div className="part" id="part6"></div>
-            <div className="part" id="part7"></div>
-            <div className="part" id="part8"></div>
-            <div className="part" id="part9"></div>
+    const addImage = (item) => {
+ 
+        console.log(dummyPeaces)
+        
+    }
 
 
+    return (
+        <>
 
-        </div>
-    </>
-);
+            <div className="body">
+
+
+                <div className="jigsaw-puzzle-drop" ref={drop}>
+
+                    <PeaceComponent />
+
+                </div>
+
+                <div className="jigsaw-puzzle-drag">
+
+                    {   
+                        puzzlePeaces.map((peaces) => {
+                            // console.log(peaces)
+                            return <PeaceComponent
+                                setpuzzlePeaces={setpuzzlePeaces}
+                                id={peaces.id}
+                                url={peaces.url}
+                                backgroundPosition={peaces.position}></PeaceComponent>
+                        })
+                    }
+
+                </div>
+
+            </div>
+
+
+
+
+        </>
+    );
 
 }

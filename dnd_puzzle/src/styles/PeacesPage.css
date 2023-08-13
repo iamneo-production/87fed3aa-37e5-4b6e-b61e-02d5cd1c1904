@@ -1,0 +1,10 @@
+
+.part {
+    width: calc(100% - 2px);
+    height: calc(100% - 2px);
+     border: 1px solid #000;
+     /* background-image: url('https://i.ibb.co/nz8vnng/ab.jpg'); */
+     background-size: 700px 700px;
+ }
+ 
+ 

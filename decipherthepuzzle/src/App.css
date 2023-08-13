@@ -26,11 +26,10 @@
   height:100px;
   border:3px gold solid;
   float:left;
+  background-repeat: no-repeat;
   background-image:url("https://pbs.twimg.com/profile_images/446356636710363136/OYIaJ1KK_400x400.png");
 }
-#reset{
-  display:none;
-}
+
 
 @media (prefers-reduced-motion: no-preference) {
   

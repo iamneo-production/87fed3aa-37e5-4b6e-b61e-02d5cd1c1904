@@ -19,4 +19,3 @@ export const updateCountry = (id, data) => {
 export const removeCountry = (id) => {
     return http.delete(`/countries/${id}`);
 };
-

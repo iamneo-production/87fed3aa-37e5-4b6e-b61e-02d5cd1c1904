@@ -11,14 +11,13 @@ import Button from '@mui/material/Button';
 
 
 
-
 function DragDrop() {
 
   const [pieces,setPieces] = useState([]);
   const[shuffled,setShuffled] = useState([]);
   const [dummy,setDummy] = useState({});
   const[solved,setSolved] = useState([]);
-  const [isDropped, setIsDropped] = useState(false);
+  // const [isDropped, setIsDropped] = useState(false);
 
   useEffect(()=>{
     getimage(1).then(res=>setPieces(res.data.pieces));
@@ -34,12 +33,7 @@ function DragDrop() {
 
   },[pieces]);
  
-  // const handleClick = ()=>{
-  //   console.log(pieces);
-  //   console.log(shuffled);
-  //   console.log(solved);
-    
-  // }
+
 
   function shufflePieces(arr) {
     const randomPieces = [...arr];
@@ -70,7 +64,7 @@ function DragDrop() {
                                   // Calculate the dropping index
                                   droppingIndex = gridY * numColumns + gridX - 71;
                                 }
-                                setIsDropped(true);
+                                // setIsDropped(true);
                                 addImageToBoard(item.id,droppingIndex);
                                 
                            },
@@ -91,14 +85,9 @@ function DragDrop() {
       solved[index] = picdata;
     }
 
-    
-    console.log(picdata);
   
   };
 
-  const handleCompare = ()=>{
-    alert(solved === pieces);
-  }
 
   
 
@@ -106,7 +95,7 @@ function DragDrop() {
   
   return (
    
-    <div className="App">
+    <div className="jigsaw">
       <h1>JigSaw Puzzle</h1>
        <CssBaseline />
         <Container maxWidth="sm">
@@ -116,7 +105,7 @@ function DragDrop() {
           <Card>
             
             {
-              shuffled.map((piece)=><GridItem id={piece.id} key={piece.id} dropped={isDropped} over={isOver} >
+              shuffled.map((piece)=><GridItem id={piece.id} key={piece.id}  over={isOver} >
                                         <img key={piece.id} style={{width: "50px",
                                                       height: "50px",
                                                       position: "relative",
@@ -149,7 +138,7 @@ function DragDrop() {
             }
 
           </Card>
-       <Button variant="contained" onClick={handleCompare}>submit</Button>
+       <Button variant="contained" >submit</Button>
 
 
 

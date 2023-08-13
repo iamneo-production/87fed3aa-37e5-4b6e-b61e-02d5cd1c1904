@@ -1,4 +1,3 @@
-
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
@@ -8,6 +7,7 @@ import { getimage } from '../services/image-service';
 import GridItem from './GridItem';
 import {useDrop } from "react-dnd";
 import "../App.css"
+import Button from '@mui/material/Button';
 
 
 
@@ -34,12 +34,12 @@ function DragDrop() {
 
   },[pieces]);
  
-  const handleClick = ()=>{
-    console.log(pieces);
-    console.log(shuffled);
-    console.log(solved);
+  // const handleClick = ()=>{
+  //   console.log(pieces);
+  //   console.log(shuffled);
+  //   console.log(solved);
     
-  }
+  // }
 
   function shufflePieces(arr) {
     const randomPieces = [...arr];
@@ -56,58 +56,51 @@ function DragDrop() {
 
   const numColumns = 8;
   const cellSize = 50; // Assuming each cell has a size of 50px
+
   const [{ isOver }, drop] = useDrop(() => ({
 
     accept: "DRAGGABLE_ITEM",
     drop: (item,monitor)=>{
-             const mousePosition = monitor.getClientOffset();
-            let droppingIndex = 0;
-            setIsDropped(true);
-      if (mousePosition) {
-        const gridX = Math.floor(mousePosition.x / cellSize);
-        const gridY = Math.floor(mousePosition.y / cellSize);
-
-       
-
-        // console.log(gridX,gridY);
-
-        // Calculate the dropping index
-        droppingIndex = gridY * numColumns + gridX - 70;
-
-
-        //console.log('Dropping Index:', droppingIndex-70);
-      }
-
-      addImageToBoard(item.id,droppingIndex);
-    
-    },
-      
-
-
+                                const mousePosition = monitor.getClientOffset();
+                                let droppingIndex = 0;
+                                
+                                if (mousePosition) {
+                                  const gridX = Math.floor(mousePosition.x / cellSize);
+                                  const gridY = Math.floor(mousePosition.y / cellSize);
+                                  // Calculate the dropping index
+                                  droppingIndex = gridY * numColumns + gridX - 71;
+                                }
+                                setIsDropped(true);
+                                addImageToBoard(item.id,droppingIndex);
+                                
+                           },
     collect: (monitor) => ({
       isOver: !!monitor.isOver(),
     }),
   }));
 
+  
+
   const addImageToBoard = (id,index) => {
-    console.log(shuffled);
-    console.log(solved);
-
+  
+   
     let picdata = pieces.find((p)=>p.id === id);
-    let sindex = shuffled.findIndex((item)=>item.id === id)
+    //let sindex = shuffled.findIndex((item)=>item.id === id)
    
-    if(sindex>=0 && index>=0 && index === id-1){
+    if( index>=0 && index === id-1){
       solved[index] = picdata;
-      
-
     }
-   
-    //  console.log(picdata);
-    // console.log("shuffeld"+sindex);
-    // console.log("dropping"+index);
+
+    
+    console.log(picdata);
   
   };
 
+  const handleCompare = ()=>{
+    alert(solved === pieces);
+  }
+
+  
 
 
   
@@ -123,12 +116,11 @@ function DragDrop() {
           <Card>
             
             {
-              shuffled.map((piece)=><GridItem id={piece.id} key={piece.id} pstyle={isDropped} >
+              shuffled.map((piece)=><GridItem id={piece.id} key={piece.id} dropped={isDropped} over={isOver} >
                                         <img key={piece.id} style={{width: "50px",
                                                       height: "50px",
                                                       position: "relative",
                                                       cursor:"pointer",
-                                                      backgroundColor: isOver ? 'lightgray' : 'white',
                                                       transition: "transform 200ms ease, box-shadow 200ms ease"}}  
                                               src={piece.url} alt="err"
                                             ></img>
@@ -157,11 +149,11 @@ function DragDrop() {
             }
 
           </Card>
-      
+       <Button variant="contained" onClick={handleCompare}>submit</Button>
 
 
 
-               <button onClick={handleClick}>click here</button>
+               {/* <button onClick={handleClick}>click here</button> */}
                 
         </Box>
 

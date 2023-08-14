@@ -8,6 +8,7 @@ import GridItem from './GridItem';
 import {useDrop } from "react-dnd";
 import "../App.css"
 import Button from '@mui/material/Button';
+import Alerts from './alert';
 
 
 
@@ -17,7 +18,8 @@ function DragDrop() {
   const[shuffled,setShuffled] = useState([]);
   const [dummy,setDummy] = useState({});
   const[solved,setSolved] = useState([]);
-  // const [isDropped, setIsDropped] = useState(false);
+  const [isCorrect, setIsCorrect] = useState(false);
+  const [isSubmitClicked,setIsSubmitClicked] = useState(false);
 
   useEffect(()=>{
     getimage(1).then(res=>setPieces(res.data.pieces));
@@ -77,11 +79,11 @@ function DragDrop() {
   
 
   const addImageToBoard = (item,index) => {
-  console.log(item,index);
-   
-    // console.log(shuffled);
+    //console.log(item,index);
     // const picdata = shuffled.find((p)=>p.id === item.id);
     // console.log(picdata);
+    // let sindex = shuffled.findIndex((i)=>i.id === item.id);
+    // console.log(sindex);
 
    
     if( index>=0 && index === item.id-1){
@@ -91,6 +93,18 @@ function DragDrop() {
   
   };
 
+  const hideAlert=()=>{
+    setIsSubmitClicked(false);
+  }
+
+
+  const handleSubmit =()=>{
+     setIsSubmitClicked(true);
+    if(pieces == solved){
+        setIsCorrect(true);
+       
+    }
+  }
 
   
 
@@ -102,7 +116,11 @@ function DragDrop() {
       <h1>JigSaw Puzzle</h1>
        <CssBaseline />
         <Container maxWidth="sm">
-        <Box sx={{ bgcolor: '#cfe8fc', height: '100vh',width:'100vh' }} >
+        <Box sx={{ bgcolor: '#cfe8fc', height: '100vh',width:'relative' }} >
+
+          {isSubmitClicked && <div> {isCorrect ?<Alerts severity ={'success'} title={'Correct'} Clicked={isSubmitClicked} onCloseClick ={hideAlert}>Congratulations you have won  </Alerts>:
+                                              <Alerts severity ={'error'} title={'Incorrect'}  Clicked={isSubmitClicked} onCloseClick = {hideAlert}>Please try Again  </Alerts>}
+                        </div>}
 
           <h1>shuffled</h1>
           <Card>
@@ -141,7 +159,7 @@ function DragDrop() {
             }
 
           </Card>
-       <Button variant="contained" >submit</Button>
+       <Button variant="contained" onClick={handleSubmit} >submit</Button>
 
 
 

@@ -14,7 +14,16 @@ function App() {
         <BrowserRouter>
                 <CssBaseline />
                 <Container maxWidth="sm">
-                    <Box sx={{ bgcolor: '#cfe8fc', height: '100vh' ,textAlign:'center'}} >
+                   <Box sx={{
+                            bgcolor: '#cfe8fc',
+                            minHeight: '150vh',
+                            minWidth:'100vh', // Set the minimum height to fill the viewport
+                            display: 'flex',
+                            flexDirection: 'column',
+                            justifyContent: 'center', // Center the content vertically
+                            alignItems: 'center', // Center the content horizontally
+                            padding: '20px',
+                        }} >             {/* { bgcolor: '#cfe8fc', height: '100%' ,textAlign:'center'} */}
                         <Routes>
                             <Route path='/' Component={SignIn}></Route>
                             <Route path='/signup' Component={SignUp}></Route>

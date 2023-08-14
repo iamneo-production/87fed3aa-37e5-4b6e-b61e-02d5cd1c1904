@@ -10,7 +10,7 @@ import { forwardRef } from 'react';
 const Card =forwardRef((props,ref)=>{
 
     const drop =ref;
-    return <Box sx={{ width: "400px",padding:'0',margin:'10px auto',border: '2px solid #DDD',borderColor:'blue' }} ref={drop}>
+    return <Box sx={{ width: "400px",padding:'0',margin:'5px auto',border: '2px solid #DDD',borderColor:'blue' }} ref={drop}>
                     <Grid container >
                           {props.children}
                     </Grid>

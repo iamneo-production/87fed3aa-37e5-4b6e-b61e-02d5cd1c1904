@@ -65,7 +65,8 @@ function DragDrop() {
                                   droppingIndex = gridY * numColumns + gridX - 71;
                                 }
                                 // setIsDropped(true);
-                                addImageToBoard(item.id,droppingIndex);
+                                //addImageToBoard(item.id,droppingIndex);
+                                 addImageToBoard(item,droppingIndex);
                                 
                            },
     collect: (monitor) => ({
@@ -75,13 +76,14 @@ function DragDrop() {
 
   
 
-  const addImageToBoard = (id,index) => {
-  
+  const addImageToBoard = (item,index) => {
+  console.log(item,index);
    
-    let picdata = pieces.find((p)=>p.id === id);
+    let picdata = pieces.find((p)=>p.id === item.id);
+    console.log(picdata);
     //let sindex = shuffled.findIndex((item)=>item.id === id)
    
-    if( index>=0 && index === id-1){
+    if( index>=0 && index === item.id-1){
       solved[index] = picdata;
     }
 

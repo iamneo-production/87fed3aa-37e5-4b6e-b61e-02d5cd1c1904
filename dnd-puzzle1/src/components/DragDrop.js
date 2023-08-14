@@ -79,12 +79,13 @@ function DragDrop() {
   const addImageToBoard = (item,index) => {
   console.log(item,index);
    
-    let picdata = pieces.find((p)=>p.id === item.id);
-    console.log(picdata);
-    //let sindex = shuffled.findIndex((item)=>item.id === id)
+    // console.log(shuffled);
+    // const picdata = shuffled.find((p)=>p.id === item.id);
+    // console.log(picdata);
+
    
     if( index>=0 && index === item.id-1){
-      solved[index] = picdata;
+      solved[index] = item;
     }
 
   

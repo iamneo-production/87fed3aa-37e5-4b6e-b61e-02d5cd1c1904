@@ -8,11 +8,12 @@ function GridItem(props) {
  
   const [{ isDragging }, drag] = useDrag(() => ({
     type: "DRAGGABLE_ITEM",
-    item: { id: props.id },
-    end:(item,monitor)=>{
-      const dropresult = monitor.getDropResult();
+    // item: { id: props.id ,url:props.url},
+    item: {id:props.id, url:props.children.props.src},                                                     
+    // end:(item,monitor)=>{
+    //   const dropresult = monitor.getDropResult();
       
-    },
+    // },
     collect: (monitor) => ({
       isDragging: !!monitor.isDragging(),
     }),

@@ -1,218 +1,230 @@
 {
-    "images": [
-      {
-        "id": "1",
-        "pieces":[
-            {
-                "id":"1",
-                "url":"/assets/images/ny_01.jpg",
-                "board":"shuffled"
-            },
-            {
-                "id":"2",
-                "url":"/assets/images/ny_02.jpg",
-                "board":"shuffled"
-            },
-            {
-                "id":"3",
-                "url":"/assets/images/ny_03.jpg",
-                "board":"shuffled"
-            },
-            {
-                "id":"4",
-                "url":"/assets/images/ny_04.jpg",
-                "board":"shuffled"
-            },
-            {
-                "id":"5",
-                "url":"/assets/images/ny_05.jpg",
-                "board":"shuffled"
-            },
-            {
-                "id":"6",
-                "url":"/assets/images/ny_06.jpg",
-                "board":"shuffled"
-            },
-            {
-                "id":"7",
-                "url":"/assets/images/ny_07.jpg",
-                "board":"shuffled"
-            },
-            {
-                "id":"8",
-                "url":"/assets/images/ny_08.jpg",
-                "board":"shuffled"
-            },
-            {
-                "id":"9",
-                "url":"/assets/images/ny_09.jpg",
-                "board":"shuffled"
-            },
-            {
-                "id":"10",
-                "url":"/assets/images/ny_10.jpg",
-                "board":"shuffled"
-            },
-            {
-                "id":"11",
-                "url":"/assets/images/ny_11.jpg",
-                "board":"shuffled"
-            },
-            {
-                "id":"12",
-                "url":"/assets/images/ny_12.jpg",
-                "board":"shuffled"
-            },
-            {
-                "id":"13",
-                "url":"/assets/images/ny_13.jpg",
-                "board":"shuffled"
-            },
-            {
-                "id":"14",
-                "url":"/assets/images/ny_14.jpg",
-                "board":"shuffled"
-            },
-            {
-                "id":"15",
-                "url":"/assets/images/ny_15.jpg",
-                "board":"shuffled"
-            },
-            {
-                "id":"16",
-                "url":"/assets/images/ny_16.jpg",
-                "board":"shuffled"
-            },
-            {
-                "id":"17",
-                "url":"/assets/images/ny_17.jpg",
-                "board":"shuffled"
-            },
-            {
-                "id":"18",
-                "url":"/assets/images/ny_18.jpg",
-                "board":"shuffled"
-            },
-            {
-                "id":"19",
-                "url":"/assets/images/ny_19.jpg",
-                "board":"shuffled"
-            },
-            {
-                "id":"20",
-                "url":"/assets/images/ny_20.jpg",
-                "board":"shuffled"
-            },
-            {
-                "id":"21",
-                "url":"/assets/images/ny_21.jpg",
-                "board":"shuffled"
-            },
-            {
-                "id":"22",
-                "url":"/assets/images/ny_22.jpg",
-                "board":"shuffled"
-            },
-            {
-                "id":"23",
-                "url":"/assets/images/ny_23.jpg",
-                "board":"shuffled"
-            },
-            {
-                "id":"24",
-                "url":"/assets/images/ny_24.jpg",
-                "board":"shuffled"
-            },
-            {
-                "id":"25",
-                "url":"/assets/images/ny_25.jpg",
-                "board":"shuffled"
-            },
-            {
-                "id":"26",
-                "url":"/assets/images/ny_26.jpg",
-                "board":"shuffled"
-            },
-            {
-                "id":"27",
-                "url":"/assets/images/ny_27.jpg",
-                "board":"shuffled"
-            },
-            {
-                "id":"28",
-                "url":"/assets/images/ny_28.jpg",
-                "board":"shuffled"
-            },
-            {
-                "id":"29",
-                "url":"/assets/images/ny_29.jpg",
-                "board":"shuffled"
-            },
-            {
-                "id":"30",
-                "url":"/assets/images/ny_30.jpg",
-                "board":"shuffled"
-            },
-            {
-                "id":"31",
-                "url":"/assets/images/ny_31.jpg",
-                "board":"shuffled"
-            },
-
-            {
-                "id":"32",
-                "url":"/assets/images/ny_32.jpg",
-                "board":"shuffled"
-            },
-            {
-                "id":"33",
-                "url":"/assets/images/ny_33.jpg",
-                "board":"shuffled"
-            },
-            {
-                "id":"34",
-                "url":"/assets/images/ny_34.jpg",
-                "board":"shuffled"
-            },
-            {
-                "id":"35",
-                "url":"/assets/images/ny_35.jpg",
-                "board":"shuffled"
-            },
-            {
-                "id":"36",
-                "url":"/assets/images/ny_36.jpg",
-                "board":"shuffled"
-            },
-            {
-                "id":"37",
-                "url":"/assets/images/ny_37.jpg",
-                "board":"shuffled"
-            },
-            {
-                "id":"38",
-                "url":"/assets/images/ny_38.jpg",
-                "board":"shuffled"
-            },
-            {
-                "id":"39",
-                "url":"/assets/images/ny_39.jpg",
-                "board":"shuffled"
-            },
-            {
-                "id":"40",
-                "url":"/assets/images/ny_40.jpg",
-                "board":"shuffled"
-            }
-        ]
-
-      },
-      {
-        "id":"2",
-        "url":"/assets/images/pixel.jpg"
-
-      }
-      
-      
+  "images": [
+    {
+      "id": "1",
+      "pieces": [
+        {
+          "id": "1",
+          "url": "/assets/images/ny_01.jpg",
+          "board": "shuffled"
+        },
+        {
+          "id": "2",
+          "url": "/assets/images/ny_02.jpg",
+          "board": "shuffled"
+        },
+        {
+          "id": "3",
+          "url": "/assets/images/ny_03.jpg",
+          "board": "shuffled"
+        },
+        {
+          "id": "4",
+          "url": "/assets/images/ny_04.jpg",
+          "board": "shuffled"
+        },
+        {
+          "id": "5",
+          "url": "/assets/images/ny_05.jpg",
+          "board": "shuffled"
+        },
+        {
+          "id": "6",
+          "url": "/assets/images/ny_06.jpg",
+          "board": "shuffled"
+        },
+        {
+          "id": "7",
+          "url": "/assets/images/ny_07.jpg",
+          "board": "shuffled"
+        },
+        {
+          "id": "8",
+          "url": "/assets/images/ny_08.jpg",
+          "board": "shuffled"
+        },
+        {
+          "id": "9",
+          "url": "/assets/images/ny_09.jpg",
+          "board": "shuffled"
+        },
+        {
+          "id": "10",
+          "url": "/assets/images/ny_10.jpg",
+          "board": "shuffled"
+        },
+        {
+          "id": "11",
+          "url": "/assets/images/ny_11.jpg",
+          "board": "shuffled"
+        },
+        {
+          "id": "12",
+          "url": "/assets/images/ny_12.jpg",
+          "board": "shuffled"
+        },
+        {
+          "id": "13",
+          "url": "/assets/images/ny_13.jpg",
+          "board": "shuffled"
+        },
+        {
+          "id": "14",
+          "url": "/assets/images/ny_14.jpg",
+          "board": "shuffled"
+        },
+        {
+          "id": "15",
+          "url": "/assets/images/ny_15.jpg",
+          "board": "shuffled"
+        },
+        {
+          "id": "16",
+          "url": "/assets/images/ny_16.jpg",
+          "board": "shuffled"
+        },
+        {
+          "id": "17",
+          "url": "/assets/images/ny_17.jpg",
+          "board": "shuffled"
+        },
+        {
+          "id": "18",
+          "url": "/assets/images/ny_18.jpg",
+          "board": "shuffled"
+        },
+        {
+          "id": "19",
+          "url": "/assets/images/ny_19.jpg",
+          "board": "shuffled"
+        },
+        {
+          "id": "20",
+          "url": "/assets/images/ny_20.jpg",
+          "board": "shuffled"
+        },
+        {
+          "id": "21",
+          "url": "/assets/images/ny_21.jpg",
+          "board": "shuffled"
+        },
+        {
+          "id": "22",
+          "url": "/assets/images/ny_22.jpg",
+          "board": "shuffled"
+        },
+        {
+          "id": "23",
+          "url": "/assets/images/ny_23.jpg",
+          "board": "shuffled"
+        },
+        {
+          "id": "24",
+          "url": "/assets/images/ny_24.jpg",
+          "board": "shuffled"
+        },
+        {
+          "id": "25",
+          "url": "/assets/images/ny_25.jpg",
+          "board": "shuffled"
+        },
+        {
+          "id": "26",
+          "url": "/assets/images/ny_26.jpg",
+          "board": "shuffled"
+        },
+        {
+          "id": "27",
+          "url": "/assets/images/ny_27.jpg",
+          "board": "shuffled"
+        },
+        {
+          "id": "28",
+          "url": "/assets/images/ny_28.jpg",
+          "board": "shuffled"
+        },
+        {
+          "id": "29",
+          "url": "/assets/images/ny_29.jpg",
+          "board": "shuffled"
+        },
+        {
+          "id": "30",
+          "url": "/assets/images/ny_30.jpg",
+          "board": "shuffled"
+        },
+        {
+          "id": "31",
+          "url": "/assets/images/ny_31.jpg",
+          "board": "shuffled"
+        },
+        {
+          "id": "32",
+          "url": "/assets/images/ny_32.jpg",
+          "board": "shuffled"
+        },
+        {
+          "id": "33",
+          "url": "/assets/images/ny_33.jpg",
+          "board": "shuffled"
+        },
+        {
+          "id": "34",
+          "url": "/assets/images/ny_34.jpg",
+          "board": "shuffled"
+        },
+        {
+          "id": "35",
+          "url": "/assets/images/ny_35.jpg",
+          "board": "shuffled"
+        },
+        {
+          "id": "36",
+          "url": "/assets/images/ny_36.jpg",
+          "board": "shuffled"
+        },
+        {
+          "id": "37",
+          "url": "/assets/images/ny_37.jpg",
+          "board": "shuffled"
+        },
+        {
+          "id": "38",
+          "url": "/assets/images/ny_38.jpg",
+          "board": "shuffled"
+        },
+        {
+          "id": "39",
+          "url": "/assets/images/ny_39.jpg",
+          "board": "shuffled"
+        },
+        {
+          "id": "40",
+          "url": "/assets/images/ny_40.jpg",
+          "board": "shuffled"
+        }
       ]
-  }
+    },
+    {
+      "id": "2",
+      "url": "/assets/images/pixel.jpg"
+    }
+  ],
+  "users": [
+    {
+      "firstname": "surya",
+      "lastname": "NAYUDU",
+      "email": "nayuduganasai@gmail.com",
+      "password": "HelloWorld",
+      "id": 1
+    },
+    {
+      "firstname": "SAI KUMAR",
+      "lastname": "EJJIPURAPU",
+      "email": "saikumarejjus@gmail.com",
+      "password": "n sdj no",
+      "id": 2
+    }
+   
+  ]
+}

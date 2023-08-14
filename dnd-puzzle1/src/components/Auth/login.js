@@ -12,6 +12,8 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
+import { getuser, getUserByEmail,findUserByEmail } from '../../services/user-service';
+import { useNavigate } from 'react-router-dom';
 
 function Copyright(props) {
   return (
@@ -31,13 +33,34 @@ function Copyright(props) {
 const defaultTheme = createTheme();
 
 export default function SignIn() {
+
+  const navigate = useNavigate();
+
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    console.log({
+    let user = {
       email: data.get('email'),
       password: data.get('password'),
-    });
+    };
+
+    // let tempuser = getUserByEmail(user.email);
+    // if(tempuser !== null){
+    //   navigate("/puzzle")
+    // }
+    // // Usage
+// const userEmail = 'nayuduganasai@gmail.com';
+findUserByEmail(user.email)
+  .then((user) => {
+    if (user) {
+      navigate("/puzzle");
+    } else {
+      console.log('please check the details');
+    }
+  })
+  .catch((error) => {
+    console.error('Error:', error);
+  });
   };
 
   return (

@@ -16,12 +16,11 @@ function App() {
                 <Container maxWidth="sm">
                     <Box sx={{ bgcolor: '#cfe8fc', height: '100vh' ,textAlign:'center'}} >
                         <Routes>
-                            <Route path='/' element={SignIn}></Route>
-                            <Route path='/signup' element={SignUp}></Route>
-                            <Route path='/puzzle' element={DragDrop}></Route>
+                            <Route path='/' Component={SignIn}></Route>
+                            <Route path='/signup' Component={SignUp}></Route>
+                            <Route path='/puzzle' Component={DragDrop}></Route>
 
-                        </Routes>
-                        
+                        </Routes>   
                     </Box>
                 </Container>
       </BrowserRouter>

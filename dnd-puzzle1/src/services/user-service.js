@@ -31,11 +31,12 @@ export const getuser = (id) => {
 // };
 
 
-export const findUserByEmail = async (email) => {
+export const findUserByEmail = async (email,password) => {
   try {
     const response = await axios.get('http://localhost:8080/users', {
       params: {
         email: email,
+        password:password
       },
     });
 

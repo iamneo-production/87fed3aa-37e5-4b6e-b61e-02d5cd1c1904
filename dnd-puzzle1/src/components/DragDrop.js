@@ -2,13 +2,14 @@ import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Card from './Card';
-import React,{ useEffect, useState } from "react";
+import React,{ useEffect, useState,useContext } from "react";
 import { getimage } from '../services/image-service';
 import GridItem from './GridItem';
 import {useDrop } from "react-dnd";
 import "../App.css"
 import Button from '@mui/material/Button';
 import Alerts from './alert';
+import UserContext from './store/userContext';
 
 
 
@@ -20,6 +21,9 @@ function DragDrop() {
   const[solved,setSolved] = useState([]);
   const [isCorrect, setIsCorrect] = useState(false);
   const [isSubmitClicked,setIsSubmitClicked] = useState(false);
+  const{user,updateUser} = useContext(UserContext);
+
+ 
 
   useEffect(()=>{
     getimage(1).then(res=>setPieces(res.data.pieces));
@@ -100,19 +104,25 @@ function DragDrop() {
 
   const handleSubmit =()=>{
      setIsSubmitClicked(true);
-    if(pieces == solved){
+    if(pieces === solved){
         setIsCorrect(true);
        
     }
   }
 
+  const handleLogout = ()=>{
+    updateUser({});
+    
+
+  }
   
 
 
-  
+  if(user){
   return (
    
     <div className="jigsaw">
+      <Button variant="contained" color='secondary' onClick={handleLogout} href='/' >Logout</Button>
       <h1>JigSaw Puzzle</h1>
        <CssBaseline />
         <Container maxWidth="sm">
@@ -172,5 +182,15 @@ function DragDrop() {
    
   );
 }
+else{
+  return(<>
+          <Alerts severity ={'error'} title={'Not LoggedIn'}  Clicked={true} onCloseClick = {hideAlert}>You Are not Logged in..Please Login  </Alerts>
+          <Button variant="contained" href='/' >Login</Button>
+          </>
+    
+  )
+}
+}
+
 
 export default DragDrop;

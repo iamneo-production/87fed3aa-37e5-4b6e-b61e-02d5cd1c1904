@@ -3,8 +3,6 @@ import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
 import CssBaseline from '@mui/material/CssBaseline';
 import TextField from '@mui/material/TextField';
-import FormControlLabel from '@mui/material/FormControlLabel';
-import Checkbox from '@mui/material/Checkbox';
 import Link from '@mui/material/Link';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
@@ -12,8 +10,10 @@ import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
 import Typography from '@mui/material/Typography';
 import Container from '@mui/material/Container';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
-import { getuser, getUserByEmail,findUserByEmail } from '../../services/user-service';
+import { findUserByEmail } from '../../services/user-service';
 import { useNavigate } from 'react-router-dom';
+import UserContext from '../store/userContext';
+import { useContext } from 'react';
 
 function Copyright(props) {
   return (
@@ -35,24 +35,20 @@ const defaultTheme = createTheme();
 export default function SignIn() {
 
   const navigate = useNavigate();
+  const{user,updateUser} = useContext(UserContext)
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
-    let user = {
+    let user1 = {
       email: data.get('email'),
       password: data.get('password'),
     };
 
-    // let tempuser = getUserByEmail(user.email);
-    // if(tempuser !== null){
-    //   navigate("/puzzle")
-    // }
-    // // Usage
-// const userEmail = 'nayuduganasai@gmail.com';
-findUserByEmail(user.email)
+findUserByEmail(user1.email,user1.password)
   .then((user) => {
     if (user) {
+      updateUser(user);
       navigate("/puzzle");
     } else {
       console.log('please check the details');
@@ -102,10 +98,7 @@ findUserByEmail(user.email)
               id="password"
               autoComplete="current-password"
             />
-            <FormControlLabel
-              control={<Checkbox value="remember" color="primary" />}
-              label="Remember me"
-            />
+          
             <Button
               type="submit"
               fullWidth
@@ -121,7 +114,7 @@ findUserByEmail(user.email)
                 </Link>
               </Grid>
               <Grid item>
-                <Link href="#" variant="body2">
+                <Link href="/signup" variant="body2">
                   {"Don't have an account? Sign Up"}
                 </Link>
               </Grid>

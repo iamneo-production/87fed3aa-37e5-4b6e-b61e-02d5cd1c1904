@@ -6,11 +6,12 @@ import Container from '@mui/material/Container';
 import SignIn from './components/Auth/login.js';
 import SignUp from './components/Auth/register';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-
+import UserProvider from './components/store/userProvider';
  
 
 function App() {
     return <React.Fragment>
+        <UserProvider>
         <BrowserRouter>
                 <CssBaseline />
                 <Container maxWidth="sm">
@@ -33,6 +34,7 @@ function App() {
                     </Box>
                 </Container>
       </BrowserRouter>
+      </UserProvider>
     </React.Fragment>
                 
  

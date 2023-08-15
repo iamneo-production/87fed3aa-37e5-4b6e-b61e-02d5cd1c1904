@@ -76,7 +76,7 @@ function DragDrop() {
                                   const gridX = Math.floor(mousePosition.x / cellSize);
                                   const gridY = Math.floor(mousePosition.y / cellSize);
                                   // Calculate the dropping index
-                                  droppingIndex = gridY * numColumns + gridX - 62;
+                                  droppingIndex = gridY * numColumns + gridX - 70;
                                 }
                                 // setIsDropped(true);
                                 //addImageToBoard(item.id,droppingIndex);

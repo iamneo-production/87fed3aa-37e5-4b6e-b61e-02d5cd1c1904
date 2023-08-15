@@ -26,15 +26,22 @@ function DragDrop() {
  
 
   useEffect(()=>{
-    getimage(1).then(res=>setPieces(res.data.pieces));
-    getimage(2).then(res=>setDummy(res.data));
 
+    getimage(1).then(res=>setPieces(res.pieces));
+    getimage(2).then(res=>setDummy(res));
     
   },[]);
 
+  const dummyData = pieces.map((_, index) => ({sid:index,...dummy}));
+
+
   useEffect(()=>{
+                                // console.log(pieces);
     setShuffled(shufflePieces([...pieces]));
-    pieces.map((item,i)=>{return solved[item.id-1] = {"sid":i,...dummy}});
+                                //pieces.map((item,i)=>{return solved[item.id-1] = {"sid":i,...dummy}});
+                                // console.log(dummyData);
+    setSolved(dummyData);
+    
     
 
   },[pieces]);
@@ -60,21 +67,23 @@ function DragDrop() {
   const [{ isOver }, drop] = useDrop(() => ({
 
     accept: "DRAGGABLE_ITEM",
-    drop: (item,monitor)=>{
+     drop: (item,monitor)=>
+                            {
                                 const mousePosition = monitor.getClientOffset();
                                 let droppingIndex = 0;
-                                
+                               
                                 if (mousePosition) {
                                   const gridX = Math.floor(mousePosition.x / cellSize);
                                   const gridY = Math.floor(mousePosition.y / cellSize);
                                   // Calculate the dropping index
-                                  droppingIndex = gridY * numColumns + gridX - 71;
+                                  droppingIndex = gridY * numColumns + gridX - 62;
                                 }
                                 // setIsDropped(true);
                                 //addImageToBoard(item.id,droppingIndex);
                                  addImageToBoard(item,droppingIndex);
                                 
                            },
+    
     collect: (monitor) => ({
       isOver: !!monitor.isOver(),
     }),
@@ -83,7 +92,7 @@ function DragDrop() {
   
 
   const addImageToBoard = (item,index) => {
-    //console.log(item,index);
+    console.log(item,index);
     // const picdata = shuffled.find((p)=>p.id === item.id);
     // console.log(picdata);
     // let sindex = shuffled.findIndex((i)=>i.id === item.id);
@@ -91,7 +100,15 @@ function DragDrop() {
 
    
     if( index>=0 && index === item.id-1){
-      solved[index] = item;
+      //solved[index] = item;
+          setSolved((prevSolved) => {
+          const updatedSolved = [...prevSolved];
+          updatedSolved[index] = item;
+          return updatedSolved;
+        });
+        //console.log(solved);
+      
+
     }
 
   
@@ -104,6 +121,7 @@ function DragDrop() {
 
   const handleSubmit =()=>{
      setIsSubmitClicked(true);
+     console.log(solved);
     if(pieces === solved){
         setIsCorrect(true);
        
@@ -171,9 +189,6 @@ function DragDrop() {
           </Card>
        <Button variant="contained" onClick={handleSubmit} >submit</Button>
 
-
-
-               {/* <button onClick={handleClick}>click here</button> */}
                 
         </Box>
 

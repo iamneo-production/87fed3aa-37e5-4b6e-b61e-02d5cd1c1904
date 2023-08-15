@@ -1,21 +1,21 @@
 import http from "../util/http";
 
-export const getAllImages = () => {
-    return http.get("/images");
+export const getAllImages = async () => {
+    try {
+        const response = await http.get("/images");
+        return response.data;
+    } catch (error) {
+        console.error('Error getting images:', error);
+        return [];
+    }
 };
 
-export const getimage = (id) => {
-    return http.get(`/images/${id}`);
-};
-
-export const createCountry = (data) => {
-    return http.post("/countries", data);
-};
-
-export const updateCountry = (id, data) => {
-    return http.put(`/countries/${id}`, data);
-};
-
-export const removeCountry = (id) => {
-    return http.delete(`/countries/${id}`);
+export const getimage = async (id) => {
+    try {
+        const response = await http.get(`/images/${id}`);
+        return response.data;
+    } catch (error) {
+        console.error(`Error getting image with id ${id}:`, error);
+        return null;
+    }
 };

@@ -207,11 +207,12 @@
     },
     {
       "id": "2",
-      "url": "/assets/images/pixel.jpg"
+      "url": "/assets/images/pixel.jpg",
+      "board": "shuffled"
     }
   ],
 
-  
+
   "users": [
     {
       "firstname": "surya",

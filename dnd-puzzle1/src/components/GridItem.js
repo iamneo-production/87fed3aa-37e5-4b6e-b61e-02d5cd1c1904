@@ -9,7 +9,8 @@ function GridItem(props) {
   const [{ isDragging }, drag] = useDrag(() => ({
     type: "DRAGGABLE_ITEM",
     // item: { id: props.id ,url:props.url},
-    item: {id:props.id, url:props.children.props.src},                                                     
+    item: {id:props.id, url:props.children.props.src, board:"shuffled"}, 
+                                                        
     // end:(item,monitor)=>{
     //   const dropresult = monitor.getDropResult();
       

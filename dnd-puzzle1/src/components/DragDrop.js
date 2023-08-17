@@ -1,3 +1,4 @@
+
 import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
@@ -10,10 +11,35 @@ import "../App.css"
 import Button from '@mui/material/Button';
 import Alerts from './alert';
 import UserContext from './store/userContext';
+import Cookies from 'js-cookie';
 
 
 
 function DragDrop() {
+
+  const styles = {
+    container: {
+      backgroundColor: '#cfe8fc',
+      minHeight: '100vh',
+      display: 'flex',
+      flexDirection: 'column',
+      alignItems: 'center',
+      justifyContent: 'center',
+      padding: '1rem',
+    },
+    card: {
+      width: '100%',
+      maxWidth: '800px',
+    },
+    submitButton: {
+      marginTop: '1rem',
+      width: '100%',
+    },
+  };
+  
+  const mediaQueries = {
+    small: '@media (max-width: 600px)', // Adjust the breakpoint as needed
+  };
 
   const [pieces,setPieces] = useState([]);
   const[shuffled,setShuffled] = useState([]);
@@ -23,17 +49,17 @@ function DragDrop() {
   const [isSubmitClicked,setIsSubmitClicked] = useState(false);
   const{user,updateUser} = useContext(UserContext);
 
- 
+  
 
   useEffect(()=>{
 
     getimage(1).then(res=>setPieces(res.pieces));
     getimage(2).then(res=>setDummy(res));
     
+    
   },[]);
 
   const dummyData = pieces.map((_, index) => ({sid:index,...dummy}));
-
 
   useEffect(()=>{
                                 // console.log(pieces);
@@ -41,8 +67,6 @@ function DragDrop() {
                                 //pieces.map((item,i)=>{return solved[item.id-1] = {"sid":i,...dummy}});
                                 // console.log(dummyData);
     setSolved(dummyData);
-    
-    
 
   },[pieces]);
  
@@ -76,7 +100,7 @@ function DragDrop() {
                                   const gridX = Math.floor(mousePosition.x / cellSize);
                                   const gridY = Math.floor(mousePosition.y / cellSize);
                                   // Calculate the dropping index
-                                  droppingIndex = gridY * numColumns + gridX - 70;
+                                  droppingIndex = gridY * numColumns + gridX -46;
                                 }
                                 // setIsDropped(true);
                                 //addImageToBoard(item.id,droppingIndex);
@@ -130,27 +154,28 @@ function DragDrop() {
 
   const handleLogout = ()=>{
     updateUser({});
+    Cookies.remove('user');
     
 
   }
   
 
 
-  if(user){
+  if(user || (Cookies.get('user'))){
   return (
    
-    <div className="jigsaw">
+    <div className="jigsaw" sx={styles.container}>
       <Button variant="contained" color='secondary' onClick={handleLogout} href='/' >Logout</Button>
-      <h1>JigSaw Puzzle</h1>
+      <h2>JigSaw Puzzle</h2>
        <CssBaseline />
-        <Container maxWidth="sm">
-        <Box sx={{ bgcolor: '#cfe8fc', height: '100vh',width:'relative' }} >
+        <Container maxWidth="sm" sx={{ ...styles.card, ...mediaQueries.small }}>
+        <Box sx={styles.container} >
 
           {isSubmitClicked && <div> {isCorrect ?<Alerts severity ={'success'} title={'Correct'} Clicked={isSubmitClicked} onCloseClick ={hideAlert}>Congratulations you have won  </Alerts>:
                                               <Alerts severity ={'error'} title={'Incorrect'}  Clicked={isSubmitClicked} onCloseClick = {hideAlert}>Please try Again  </Alerts>}
                         </div>}
 
-          <h1>shuffled</h1>
+          <h2>shuffled</h2>
           <Card>
             
             {
@@ -167,8 +192,7 @@ function DragDrop() {
 
           </Card>
 
-          <h1>Solution</h1>
-
+          
            <Card ref={drop}>
             {
               
@@ -187,6 +211,7 @@ function DragDrop() {
             }
 
           </Card>
+          <h2>Solution</h2>
        <Button variant="contained" onClick={handleSubmit} >submit</Button>
 
                 

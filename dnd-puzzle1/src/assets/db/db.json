@@ -211,8 +211,6 @@
       "board": "shuffled"
     }
   ],
-
-
   "users": [
     {
       "firstname": "surya",
@@ -227,7 +225,13 @@
       "email": "saikumarejjus@gmail.com",
       "password": "n sdj no",
       "id": 2
+    },
+    {
+      "firstname": "manoj",
+      "lastname": "janapati",
+      "email": "manoj@gmail.com",
+      "password": "ABCD123456",
+      "id": 3
     }
-   
   ]
 }

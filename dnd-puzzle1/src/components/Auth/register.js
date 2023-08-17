@@ -1,3 +1,4 @@
+
 import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -26,6 +27,13 @@ function Copyright(props) {
   );
 }
 
+function validateEmail(email) {
+  return /\S+@gmail\.com$/.test(email);
+}
+
+function validatePassword(password) {
+  return password.length > 8;
+}
 // TODO remove, this demo shouldn't need to reset the theme.
 
 const defaultTheme = createTheme();
@@ -33,6 +41,7 @@ const defaultTheme = createTheme();
 export default function SignUp() {
 
   const navigate = useNavigate();
+  const [errors, setErrors] = React.useState({});
 
   const [user,setUser] = React.useState({firstname:"",
                                         lastname:"", 
@@ -41,20 +50,41 @@ export default function SignUp() {
 
   const handleSubmit = (event) => {
     event.preventDefault();
-    const data = new FormData(event.currentTarget);
-    let user1 = { 
-            firstname:data.get('firstName'),    //"surya",
-            lastname: data.get('lastName'),  //"nayudu",
-            email:   data.get('email'),//"suryanayudu@gmail.com",
-            password: data.get('password')  //"helloworld"
-        
+    const validationErrors = {};
+
+    if (!user.firstname) {
+      validationErrors.firstname = 'First name is required';
     }
-    setUser(user1);
+
+    if (!user.lastname) {
+      validationErrors.lastname = 'Last name is required';
+    }
+
+    if (!user.email) {
+      validationErrors.email = 'Email is required';
+    } else if (!validateEmail(user.email)) {
+      validationErrors.email = 'Please enter a valid Gmail address';
+    }
+
+    if (!user.password) {
+      validationErrors.password = 'Password is required';
+    } else if (!validatePassword(user.password)) {
+      validationErrors.password = 'Password must be at least 8 characters';
+    }
+
+    if (Object.keys(validationErrors).length > 0) {
+      setErrors(validationErrors);
+      return;
+    }
+
+  
     createUser(user);
-    // setUser({firstname:"",
-    //         lastname:"", 
-    //         email:   "",
-    //         password: "" });
+    setUser({
+      firstname: '',
+      lastname: '',
+      email: '',
+      password: '',
+    });
     navigate("/");
 
   };
@@ -87,7 +117,10 @@ export default function SignUp() {
                   fullWidth
                   id="firstName"
                   label="First Name"
-                  // value={user.firstname}
+                  value={user.firstname}
+                  onChange={(e) => setUser((prevUser) => ({ ...prevUser, firstname: e.target.value }))}
+                  error={!!errors.firstname}
+                  helperText={errors.firstname}
                   autoFocus
                 />
               </Grid>
@@ -99,7 +132,10 @@ export default function SignUp() {
                   label="Last Name"
                   name="lastName"
                   autoComplete="family-name"
-                  // value={user.lastname}
+                  value={user.lastname}
+                  onChange={(e) => setUser((prevUser) => ({ ...prevUser, lastname: e.target.value }))}
+                  error={!!errors.lastname}
+                  helperText={errors.lastname}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -110,7 +146,10 @@ export default function SignUp() {
                   label="Email Address"
                   name="email"
                   autoComplete="email"
-                  // value={user.email}
+                  value={user.email}
+                  onChange={(e) => setUser((prevUser) => ({ ...prevUser, email: e.target.value }))}
+                  error={!!errors.email}
+                  helperText={errors.email}
                 />
               </Grid>
               <Grid item xs={12}>
@@ -122,7 +161,10 @@ export default function SignUp() {
                   type="password"
                   id="password"
                   autoComplete="new-password"
-                  // value={user.password}
+                  value={user.password}
+                  onChange={(e) => setUser((prevUser) => ({ ...prevUser, password: e.target.value }))}
+                  error={!!errors.password}
+                  helperText={errors.password}
                 />
               </Grid>
             </Grid>

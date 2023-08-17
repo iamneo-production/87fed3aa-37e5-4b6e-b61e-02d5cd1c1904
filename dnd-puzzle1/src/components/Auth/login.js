@@ -1,3 +1,4 @@
+
 import * as React from 'react';
 import Avatar from '@mui/material/Avatar';
 import Button from '@mui/material/Button';
@@ -14,13 +15,16 @@ import { findUserByEmail } from '../../services/user-service';
 import { useNavigate } from 'react-router-dom';
 import UserContext from '../store/userContext';
 import { useContext } from 'react';
+import Cookies from 'js-cookie';
+import Alert from '@mui/material/Alert';
+
 
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
       <Link color="inherit" href="https://mui.com/">
-        Your Website
+        DnD Puzzle
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}
@@ -36,21 +40,49 @@ export default function SignIn() {
 
   const navigate = useNavigate();
   const{user,updateUser} = useContext(UserContext)
+  const[isClicked,setIsClicked] = React.useState(false);
+  const[userFound,SetUserFound] = React.useState(false);
+  const [emailError, setEmailError] = React.useState('');
+  const [passwordError, setPasswordError] = React.useState('');
+
+
+
+  
+
 
   const handleSubmit = (event) => {
     event.preventDefault();
     const data = new FormData(event.currentTarget);
+    setIsClicked(true);
     let user1 = {
       email: data.get('email'),
       password: data.get('password'),
     };
 
+  setEmailError('');
+  setPasswordError('');
+
+  // Field validations
+  if (!user1.email || !user1.email.includes('@gmail.com')) {
+    setEmailError('Invalid email address, Please Check it');
+    return;
+  }
+
+  if (!user1.password || user1.password.length < 8) {
+    setPasswordError('Password must be at least 8 characters');
+    return;
+  }
+
+
 findUserByEmail(user1.email,user1.password)
   .then((user) => {
     if (user) {
+      SetUserFound(true);
       updateUser(user);
+      Cookies.set('user',JSON.stringify(user));
       navigate("/puzzle");
     } else {
+      SetUserFound(false);
       console.log('please check the details');
     }
   })
@@ -59,7 +91,12 @@ findUserByEmail(user1.email,user1.password)
   });
   };
 
+  const hideAlert = ()=>{
+      setIsClicked(false);
+  }
+
   return (
+    <>
     <ThemeProvider theme={defaultTheme}>
       <Container component="main" maxWidth="xs">
         <CssBaseline />
@@ -87,6 +124,8 @@ findUserByEmail(user1.email,user1.password)
               name="email"
               autoComplete="email"
               autoFocus
+              error={!!emailError}
+              helperText={emailError}
             />
             <TextField
               margin="normal"
@@ -97,7 +136,11 @@ findUserByEmail(user1.email,user1.password)
               type="password"
               id="password"
               autoComplete="current-password"
+              error={!!passwordError}
+            helperText={passwordError}
             />
+            {(isClicked &&(userFound === false)) &&  <Alert severity="error"> User Details not Found,Please Register first or check your details!</Alert>}
+    
           
             <Button
               type="submit"
@@ -108,11 +151,6 @@ findUserByEmail(user1.email,user1.password)
               Sign In
             </Button>
             <Grid container>
-              <Grid item xs>
-                <Link href="#" variant="body2">
-                  Forgot password?
-                </Link>
-              </Grid>
               <Grid item>
                 <Link href="/signup" variant="body2">
                   {"Don't have an account? Sign Up"}
@@ -124,5 +162,6 @@ findUserByEmail(user1.email,user1.password)
         <Copyright sx={{ mt: 8, mb: 4 }} />
       </Container>
     </ThemeProvider>
+    </>
   );
 }
